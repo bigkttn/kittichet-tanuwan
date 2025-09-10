@@ -136,7 +136,9 @@ class _MyWidgetState extends State<Registerpage> {
                     child: const Text('หากยังมีบัญชีอยู่แล้ว?'),
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      login();
+                    },
                     child: const Text('เข้าสู่ระบบ'),
                   ),
                 ],
@@ -149,10 +151,7 @@ class _MyWidgetState extends State<Registerpage> {
   }
 
   login() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => LoginPage()),
-    );
+    Navigator.of(context).popUntil((route) => route.isFirst);
   }
 
   register() {
@@ -192,7 +191,7 @@ class _MyWidgetState extends State<Registerpage> {
       // Add validation and API call logic as needed
       log('Password: $userPassword');
       log('Confirm Password: $confirmPassword');
-      MaterialPageRoute(builder: (context) => LoginPage());
+      Navigator.of(context).popUntil((route) => route.isFirst);
     } else {
       log("nononononononononon");
     }
